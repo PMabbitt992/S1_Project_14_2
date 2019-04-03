@@ -21,3 +21,37 @@
       the customer.
 
 */
+window.onload = setupCart;
+
+function setupCart() {
+      var addButtons = document.querySelectorAll("input.addButton");
+      for (var i = 0; i < addButtons.length; i++) {
+            addButtons.addEventListener("click", addItem());
+      }
+}
+
+function addItem() {
+      var foodItem = addButtons[i].nextElementSibiling.innerHTML;
+      var foodID = foodItem.target.id;
+      var foodDescription = foodItem.cloneNode(true);
+      var cartBox = document.getElementById("cart");
+      var duplicateOrder = false;
+      var count = ""
+      var countBox = document.createElement("span");
+      cartBox.childNodes.appendChild(countBox);
+      count.appendChild(count);
+      for (var i = 0; i < cartBox.childNodes /*the child nodes of cartBox i think*/ ; i++) {
+            if (i === foodID) {
+                  count += 1;
+                  duplicateOrder = true;
+                  break;
+            }
+      }
+
+      if (duplicateOrder === false) {
+            var orderCount = document.createElement("span");
+            orderCount.setAttribute("text", "1");
+            foodDescription.appendChild(orderCount);
+            cartBox.appendChild(foodDescription);
+      }
+}
